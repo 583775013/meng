@@ -1,17 +1,44 @@
+
+#基础镜像为centos
+
 FROM centos
-ADD Apache_OpenOffice_4.1.6_Linux_x86-64_install-rpm_zh-CN.tar.gz /tmp/
-ADD chinses.tar.gz /usr/share/fonts/
+
 RUN cd /tmp && \
+
+#安装wget
+
+yum -y install wget && \
+
+#下载安装包
+
+wget https://sourceforge.net/projects/openofficeorg.mirror/files/4.1.6/binaries/zh-CN/Apache_OpenOffice_4.1.6_Linux_x86-64_install-rpm_zh-CN.tar.gz && \
+
+#解压缩
+
+tar -xvf Apache_OpenOffice*.tar.gz && \
+
+#安装OpenOffice
+
 yum install -y zh-CN/RPMS/*.rpm && \
+
+#安装JDK
+
 yum install -y java-1.8.0-openjdk.x86_64 && \
+
+#清除yum缓存
+
 yum clean all && \
-rm -rf zh-CN && \
-cd /usr/share/fonts/ && \
-chmod -R 755 /usr/share/fonts && \
-mkfontscale && \
-mkfontdir && \
-fc-cache -fv
+
+#删除压缩包
+
+rm -f Apache_OpenOffice_4.1.6_Linux_x86-64_install-rpm_zh-CN.tar.gz&& \
+
+#删除解压缩的文件
+
+rm -Rf zh-CN
+
+#暴露接口
 EXPOSE 8100
-ENV JAVA_HOME /usr/lib/jvm/jre-1.8.0-openjdk-1.8.0.222.b10-0.el7_6.x86_64
+
+#启动服务，占用8100端口
 CMD /opt/openoffice4/program/soffice -headless -nofirststartwizard  -accept="socket,host=0.0.0.0,port=8100;urp;"
-VOLUME /tmp
