@@ -11,7 +11,7 @@ yum -y install wget && \
 
 #下载安装包
 
-wget https://sourceforge.net/projects/openofficeorg.mirror/files/4.1.6/binaries/zh-CN/Apache_OpenOffice_4.1.6_Linux_x86-64_install-rpm_zh-CN.tar.gz && \
+wget https://sourceforge.net/projects/openofficeorg.mirror/files/4.1.7/binaries/zh-CN/Apache_OpenOffice_4.1.7_Linux_x86-64_install-deb_zh-CN.tar.gz && \
 
 #解压缩
 
@@ -31,13 +31,13 @@ yum clean all && \
 
 #删除压缩包
 
-rm -f Apache_OpenOffice_4.1.6_Linux_x86-64_install-rpm_zh-CN.tar.gz&& \
+rm -f Apache_OpenOffice_4.1.7_Linux_x86-64_install-deb_zh-CN.tar.gz&& \
 
 #删除解压缩的文件
 
 rm -Rf zh-CN
 
-#暴露接口
+#暴露接口ls
 EXPOSE 8100
 
 #启动服务，占用8100端口
