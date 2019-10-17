@@ -19,7 +19,7 @@ tar -xvf Apache_OpenOffice*.tar.gz && \
 
 #安装OpenOffice
 
-yum install -y zh-CN/RPMS/*.rpm && \
+yum install -y zh-CN/RPMS/*.deb && \
 
 #安装JDK
 
