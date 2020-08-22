@@ -1,5 +1,5 @@
 
-#基础镜像为centos
+#基础镜像为
 
 FROM centos
 
